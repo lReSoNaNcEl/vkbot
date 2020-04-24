@@ -13,7 +13,7 @@ easyvk({
         app
     })
 
-    connection.on('new_message', async msg => {
+    connection.on('message_new', async msg => {
         const data = await vk.call('messages.send', {
             user_id: vk.session.user_id,
             message: 'Привет странник)',
