@@ -16,7 +16,7 @@ easyvk({
 
     connection.on('message_new', msg => {
         vk.call('messages.send', {
-            user_id: '170839309',
+            user_id: vk.session.user_id,
             message: 'Привет странник)',
             random_id: easyvk.randomId()
         })
