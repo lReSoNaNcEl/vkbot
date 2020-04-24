@@ -13,28 +13,11 @@ easyvk({
         app
     })
 
+    connection.on('new_message', async msg => {
+        const data = await vk.call({
+            peer_id: vk.session.user_id,
+            message: 'Привет странник)',
+            random_id: easyvk.randomId()
+        })
+    })
 })
-
-
-
-//     .then(async vk => {
-//
-//     console.log(vk)
-//
-//     const connection = await vk.callbackAPI.listen({
-//         confirmCode: '3b575cfd',
-//         port: process.env.PORT || 8080,
-//         path: '/webhook',
-//         app
-//     })
-//     //
-//     // connection.on('new_message', msg => {
-//     //     console.log(msg)
-//     // })
-//
-// })
-
-
-// app.get('/', (req, res) => {
-//     res.send('Hello2')
-// })
