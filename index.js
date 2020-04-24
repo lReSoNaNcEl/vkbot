@@ -9,16 +9,16 @@ easyvk({
     const connection = await vk.callbackAPI.listen({
         confirmCode: '3b575cfd',
         port: process.env.PORT || 8080,
-        path: 'https://nameless-taiga-23739.herokuapp.com/',
+        path: '/',
         app
     })
 
 
-    connection.on('message_new', msg => {
-        vk.call('messages.send', {
-            user_id: '170839309',
-            message: 'Привет странник)',
-            random_id: easyvk.randomId()
-        })
-    })
+    // connection.on('message_new', msg => {
+    //     vk.call('messages.send', {
+    //         user_id: '170839309',
+    //         message: 'Привет странник)',
+    //         random_id: easyvk.randomId()
+    //     })
+    // })
 })
