@@ -13,8 +13,8 @@ easyvk({
         app
     })
 
-    connection.on('message_new', async msg => {
-        const data = await vk.call('messages.send', {
+    connection.on('message_new', msg => {
+        vk.call('messages.send', {
             user_id: vk.session.user_id,
             message: 'Привет странник)',
             random_id: easyvk.randomId()
