@@ -3,7 +3,8 @@ const path = require('path')
 const app = require('express')()
 
 easyvk({
-    token: 'bda38eb5ec9d73e6d70f6a89d0d4f8641231eae48cf249ab2a6288693b86ca2b92bd767918c8dd203804e'
+    token: 'bda38eb5ec9d73e6d70f6a89d0d4f8641231eae48cf249ab2a6288693b86ca2b92bd767918c8dd203804e',
+    v: 5.103
 }).then(async vk => {
 
     const id = vk.session.user_id
@@ -16,12 +17,9 @@ easyvk({
     })
 
     connection.on('message_new', async msg => {
-        const sender = await vk.call('messages.getById', {
-            message_ids: msg[1]
-        })
 
         const data = await vk.call('messages.send', {
-            user_id: sender.user_id,
+            peer_id: msg.message.peer_id,
             message: 'Привет)',
             random_id: easyvk.randomId()
         })
