@@ -20,8 +20,8 @@ easyvk({
         console.log(msg)
 
         const data = await vk.call('messages.send', {
-            peer_id: msg.object.user_id.toString(),
-            message: JSON.stringify(msg),
+            peer_id: msg.object.user_id,
+            message: 'Привет, привет)',
             random_id: easyvk.randomId()
         })
 
