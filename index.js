@@ -15,11 +15,16 @@ easyvk({
         app
     })
 
-    connection.on('message_new', msg => {
-        vk.call('messages.send', {
-            user_id: id,
-            message: 'Привет странник)',
+    connection.on('message_new', async msg => {
+        const sender = await vk.call('messages.getById', {
+            message_ids: msg[1]
+        })
+
+        const data = await vk.call('messages.send', {
+            user_id: sender.user_id,
+            message: 'Привет)',
             random_id: easyvk.randomId()
         })
+
     })
 })
