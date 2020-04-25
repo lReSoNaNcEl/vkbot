@@ -7,14 +7,17 @@ easyvk({
     v: 5.103
 }).then(async vk => {
 
-    const id = vk.session.user_id
 
-    const connection = await vk.callbackAPI.listen({
-        confirmCode: '3b575cfd',
-        port: process.env.PORT || 8080,
-        path: '/',
-        app
-    })
+    // let connection = await vk.bots.longpoll.connect();
+
+    const connection = await vk.bots.longpoll.connect();
+
+    // const connection = await vk.callbackAPI.listen({
+    //     confirmCode: '3b575cfd',
+    //     port: process.env.PORT || 8080,
+    //     path: '/',
+    //     app
+    // })
 
     connection.on('message_new', async msg => {
 
