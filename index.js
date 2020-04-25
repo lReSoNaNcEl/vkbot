@@ -17,9 +17,11 @@ easyvk({
 
     connection.on('message_new', async msg => {
 
+        console.log(msg)
+
         const data = await vk.call('messages.send', {
             peer_id: '170839309',
-            message: 'Привет)',
+            message: JSON.stringify(msg),
             random_id: easyvk.randomId()
         })
 
