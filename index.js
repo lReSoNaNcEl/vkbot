@@ -6,6 +6,8 @@ easyvk({
     token: 'bda38eb5ec9d73e6d70f6a89d0d4f8641231eae48cf249ab2a6288693b86ca2b92bd767918c8dd203804e'
 }).then(async vk => {
 
+    const id = vk.session.user_id
+
     const connection = await vk.callbackAPI.listen({
         confirmCode: '3b575cfd',
         port: process.env.PORT || 8080,
@@ -13,10 +15,9 @@ easyvk({
         app
     })
 
-
     connection.on('message_new', msg => {
         vk.call('messages.send', {
-            user_id: vk.session.user_id,
+            user_id: id,
             message: 'Привет странник)',
             random_id: easyvk.randomId()
         })
